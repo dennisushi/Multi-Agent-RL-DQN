@@ -9,7 +9,7 @@ To run, just download the notebook and run it in Colab. Currently, this version 
 
 Make sure that you have all the dependencies. In google CoLab, this can be done by running the following lines before the rest of the code:
 
-```python
+```
   !rm -rf /content/ma-gym  
   !git clone https://github.com/koulanurag/ma-gym.git 
   %cd /content/ma-gym 
