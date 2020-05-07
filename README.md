@@ -9,28 +9,19 @@ To run, just download the notebook and run it in Colab. Currently, this version 
 
 Make sure that you have all the dependencies. In google CoLab, this can be done by running the following lines before the rest of the code:
 
+```python
   !rm -rf /content/ma-gym  
-  
   !git clone https://github.com/koulanurag/ma-gym.git 
-  
   %cd /content/ma-gym 
-  
   !pip install -q -e . 
-  
   !apt-get install -y xvfb python-opengl x11-utils > /dev/null 2>&1
-  
   !pip install pyvirtualdisplay > /dev/null 2>&1
-  
   !apt-get install x11-utils
-  
   !apt-get update > /dev/null 2>&1
-  
   !apt-get install cmake > /dev/null 2>&1
-  
   !pip install --upgrade setuptools 2>&1
-  
   !pip install ez_setup > /dev/null 2>&1
-  
   !pip install -U gym[atari] > /dev/null 2>&1
+```
   
 Then import ReplayBuffer.py and dqn_agent.py and run the main.py code.
