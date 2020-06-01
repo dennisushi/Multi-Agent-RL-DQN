@@ -9,6 +9,30 @@ import numpy as np
 import random
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+class MARL_QNetwork(nn.Module):
+  # Defines the Q Network used for local and target networks
+  def __init__(self, state_size, action_size, seed, fc1_unit=64, fc2_unit = 64):
+    super(MARL_QNetwork, self).__init__()
+    self.seed = torch.manual_seed(seed)
+    self.fc1 = nn.Linear(state_size, fc1_unit)
+    self.fc2 = nn.Linear(fc1_unit, fc2_unit)
+    self.head = nn.Linear(fc2_unit, action_size)
+
+    self.init_weights(self.fc1)
+    self.init_weights(self.fc2)
+    self.init_weights(self.head)
+
+  def init_weights(self,m):
+    if type(m) == nn.Linear:
+        torch.nn.init.xavier_uniform_(m.weight)
+        m.bias.data.fill_(0.01)
+      
+  def forward(self, x):
+    x = F.relu(self.fc1(x))
+    x = F.relu(self.fc2(x))
+    x = self.head(x)
+    return x.view(x.size(0), -1)
+
 class MARL_DQN_Agent(object):
   def __init__(self, state_size, action_size, seed,
                update_every=5, lr=1e-3,
