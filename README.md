@@ -25,3 +25,8 @@ Make sure that you have all the dependencies. In google CoLab, this can be done 
 ```
   
 Then import ReplayBuffer.py and dqn_agent.py and run the main.py code.
+
+
+## Results
+![2-player](https://i.imgur.com/KpEPcxZ.gif)
+![4-player](https://i.imgur.com/rodsjv2.gif)
